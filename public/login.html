@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collector Portal | FISO Contemporary Pakistani Art</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="fiso-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="FISO Gallery Homepage">
+        <img src="/images/logo.svg" alt="FISO Gallery Logo" style="height: 38px; width: auto;" />
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/" class="nav-link">Gallery</a></li>
+          <li><a href="/catalog.html" class="nav-link">Artworks</a></li>
+          <li><a href="/#movements" class="nav-link">Movements</a></li>
+          <li><a href="/#think-create" class="nav-link">Think &amp; Create</a></li>
+          <li><a href="/login.html" class="nav-link active">Collector Portal</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="currency-switcher">
+          <button class="curr-btn curr-pkr active">PKR</button>
+          <button class="curr-btn curr-usd">USD</button>
+        </div>
+
+        <button class="icon-btn open-cart-trigger" aria-label="Open Collection Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- AUTHENTICATION PORTAL (Shown when logged out) -->
+  <section id="auth-portal-section" class="section">
+    <div class="container">
+      <div class="auth-wrapper">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-target="login">Collector Sign In</button>
+          <button class="auth-tab" data-target="register">New Collector</button>
+        </div>
+
+        <!-- Login Form Container -->
+        <div id="login-form-container">
+          <form id="login-form">
+            <div class="form-field" style="margin-bottom: 1.25rem;">
+              <label class="form-label" for="login-email">Registered Email</label>
+              <input type="email" id="login-email" class="form-input" placeholder="collector@fiso.pk" required>
+            </div>
+            <div class="form-field" style="margin-bottom: 1.5rem;">
+              <label class="form-label" for="login-password">Password</label>
+              <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign In to Collection</button>
+          </form>
+
+          <!-- Demo Quick Credentials Helper -->
+          <div style="margin-top: 1.5rem; background: var(--bg-dark); border: 1px solid var(--border-color); padding: 1rem; font-size: 0.8rem;">
+            <div style="color: var(--accent-yellow); font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase;">Quick Demo Credentials:</div>
+            <div style="display: flex; gap: 0.5rem; flex-direction: column;">
+              <button onclick="fillDemo('collector@fiso.pk', 'collector123')" class="btn btn-secondary btn-sm" style="text-align: left; justify-content: flex-start;">
+                Patron: collector@fiso.pk (Amina Bilal)
+              </button>
+              <button onclick="fillDemo('curator@fiso.pk', 'curator123')" class="btn btn-secondary btn-sm" style="text-align: left; justify-content: flex-start;">
+                Curator: curator@fiso.pk (Raza Ali)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Register Form Container -->
+        <div id="register-form-container" style="display: none;">
+          <form id="register-form">
+            <div class="form-field" style="margin-bottom: 1.25rem;">
+              <label class="form-label" for="reg-name">Full Name / Patron Title</label>
+              <input type="text" id="reg-name" class="form-input" placeholder="e.g. Dr. Tariq Niazi" required>
+            </div>
+            <div class="form-field" style="margin-bottom: 1.25rem;">
+              <label class="form-label" for="reg-email">Email Address</label>
+              <input type="email" id="reg-email" class="form-input" placeholder="tariq@gmail.com" required>
+            </div>
+            <div class="form-field" style="margin-bottom: 1.5rem;">
+              <label class="form-label" for="reg-password">Create Secure Password</label>
+              <input type="password" id="reg-password" class="form-input" placeholder="At least 6 characters" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Open Collector Account</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTOR DASHBOARD (Shown when logged in) -->
+  <section id="collector-dashboard-section" style="display: none;">
+    
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+      <div class="container dashboard-user-bar">
+        <div>
+          <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-yellow); letter-spacing: 0.12em; font-weight: 700;">Collector Dashboard</span>
+          <h1 id="dash-user-name" style="font-size: 2.4rem; margin: 0.25rem 0;">Welcome</h1>
+          <p id="dash-user-email" style="color: var(--text-muted); font-size: 0.95rem;">collector@fiso.pk</p>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <span id="dash-user-role" class="tag-badge" style="padding: 0.4rem 1rem; font-size: 0.85rem;">Patron &bull; Collector</span>
+          <button id="dash-logout-btn" class="btn btn-outline btn-sm">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content Container -->
+    <div class="container section" style="padding-top: 0;">
+      
+      <!-- Acquisition History -->
+      <div style="margin-bottom: 4rem;">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <div>
+            <span class="section-subtitle">Custody &amp; Provenance</span>
+            <h2 class="section-title" style="font-size: 2rem;">Acquisition Archive &amp; Orders</h2>
+          </div>
+        </div>
+        <div id="dash-orders-container">
+          <!-- Dynamically populated via auth.js -->
+        </div>
+      </div>
+
+      <!-- Private Collector Shortlist (Favorites) -->
+      <div>
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <div>
+            <span class="section-subtitle">Private Shortlist</span>
+            <h2 class="section-title" style="font-size: 2rem;">Saved Artworks in Observation</h2>
+          </div>
+          <a href="/catalog.html" class="section-link">Explore More Pieces &rarr;</a>
+        </div>
+        <div id="dash-favorites-container">
+          <!-- Dynamically populated via auth.js -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-Over Drawer Cart -->
+  <div id="drawer-backdrop" class="drawer-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        Collector Cart
+      </h3>
+      <button id="close-cart-drawer" class="icon-btn">&times;</button>
+    </div>
+    <div id="drawer-items-list" class="drawer-items-list"></div>
+    <div class="drawer-footer">
+      <div class="drawer-subtotal-row">
+        <span class="drawer-subtotal-label">Estimated Total</span>
+        <span id="drawer-subtotal-val" class="drawer-subtotal-amount">Rs. 0</span>
+      </div>
+      <a href="/cart.html" class="btn btn-primary btn-block">Proceed to White-Glove Checkout</a>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="fiso-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>&copy; 2024 FISO Contemporary Pakistani Art Gallery.</div>
+        <div>Collector data secured via 256-bit encrypted authentication.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/app.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    function fillDemo(email, pass) {
+      document.getElementById("login-email").value = email;
+      document.getElementById("login-password").value = pass;
+      window.FISO.showToast("Credentials filled. Click 'Sign In' to enter.");
+    }
+  </script>
+</body>
+</html>

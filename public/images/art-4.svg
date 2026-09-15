@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="clayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C26D45"/>
+      <stop offset="50%" stop-color="#8B3E1F"/>
+      <stop offset="100%" stop-color="#4E1F0E"/>
+    </linearGradient>
+    <radialGradient id="galleryStudio" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#262626"/>
+      <stop offset="80%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#galleryStudio)"/>
+  <!-- Studio Spot Floor Shadow -->
+  <ellipse cx="400" cy="820" rx="260" ry="40" fill="#000000" opacity="0.75"/>
+  <!-- Terracotta Vessel Body -->
+  <path d="M310 320 Q310 260 400 250 Q490 260 490 320 Q540 440 590 560 Q630 680 540 760 Q400 810 260 760 Q170 680 210 560 Q260 440 310 320 Z" fill="url(#clayGrad)"/>
+  <!-- Rim & Mouth -->
+  <ellipse cx="400" cy="260" rx="90" ry="24" fill="#6A2E16" stroke="#AA532E" stroke-width="4"/>
+  <ellipse cx="400" cy="260" rx="65" ry="16" fill="#1C0A04"/>
+  <!-- Harappan Inscribed Motif Bands -->
+  <path d="M235 520 Q400 580 565 520" fill="none" stroke="#2B1309" stroke-width="8" stroke-dasharray="12,8"/>
+  <path d="M220 570 Q400 630 580 570" fill="none" stroke="#2B1309" stroke-width="12"/>
+  <path d="M210 610 Q400 670 590 610" fill="none" stroke="#E59872" stroke-width="4" stroke-dasharray="6,10"/>
+  <!-- Ancient Fish / Bull Iconography -->
+  <path d="M370 420 Q400 395 430 420 Q450 440 430 460 Q400 475 370 460 Z" fill="#2B1309"/>
+  <circle cx="390" cy="425" r="3" fill="#E59872"/>
+  <line x1="430" y1="435" x2="455" y2="425" stroke="#2B1309" stroke-width="4"/>
+  <line x1="430" y1="445" x2="455" y2="455" stroke="#2B1309" stroke-width="4"/>
+  <!-- Hairline crackles -->
+  <path d="M360 480 Q370 540 350 620 Q340 680 390 740" fill="none" stroke="#1A0A04" stroke-width="2" opacity="0.6"/>
+  <text x="400" y="900" font-family="'Cormorant Garamond', serif" font-size="24" fill="#F8FAFC" text-anchor="middle" letter-spacing="4">MOHENJO'S CLAY TONGUE</text>
+  <text x="400" y="935" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" fill="#94A3B8" text-anchor="middle" letter-spacing="2">SABEEN KARIM ? ALLUVIAL INDUS SILT</text>
+</svg>
