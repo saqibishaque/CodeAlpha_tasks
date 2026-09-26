@@ -1,8 +1,8 @@
 ﻿node_modules/
-database.sqlite
 .env
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.DS_Store
-Thumbs.db
+.env.*
+!.env.example
+dist/
+build/
+coverage/
+.vscode/

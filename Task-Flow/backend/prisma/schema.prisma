@@ -1,0 +1,99 @@
+// Prisma Schema for TaskFlow Collaborative Project Management
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                 String          @id @default(uuid())
+  email              String          @unique
+  password           String
+  name               String
+  avatarUrl          String?
+  role               String          @default("MEMBER")
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  
+  ownedProjects      Project[]       @relation("ProjectOwner")
+  projectMemberships ProjectMember[]
+  createdTasks       Task[]          @relation("TaskCreator")
+  assignedTasks      Task[]          @relation("TaskAssignee")
+  comments           Comment[]
+}
+
+model Project {
+  id          String          @id @default(uuid())
+  name        String
+  description String?
+  ownerId     String
+  owner       User            @relation("ProjectOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  members     ProjectMember[]
+  columns     Column[]
+  tasks       Task[]
+}
+
+model ProjectMember {
+  id        String   @id @default(uuid())
+  projectId String
+  userId    String
+  role      String   @default("MEMBER") // OWNER, ADMIN, MEMBER, VIEWER
+  joinedAt  DateTime @default(now())
+
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+}
+
+model Column {
+  id        String   @id @default(uuid())
+  name      String
+  order     Int
+  color     String?  @default("#6366f1")
+  projectId String
+  createdAt DateTime @default(now())
+
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  tasks     Task[]
+}
+
+model Task {
+  id          String    @id @default(uuid())
+  title       String
+  description String?
+  priority    String    @default("MEDIUM") // LOW, MEDIUM, HIGH, URGENT
+  dueDate     DateTime?
+  order       Int       @default(0)
+  tags        String?   // comma separated tags: "Feature,UI/UX"
+  columnId    String
+  projectId   String
+  creatorId   String
+  assigneeId  String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  column      Column    @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  creator     User      @relation("TaskCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  assignee    User?     @relation("TaskAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+  comments    Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  taskId    String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
