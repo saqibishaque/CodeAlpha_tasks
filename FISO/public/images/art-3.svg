@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" width="100%" height="100%">
+  <defs>
+    <radialGradient id="lapisBg" cx="40%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="40%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="goldSwirl" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#FFE066"/>
+      <stop offset="40%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#85581A"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1000" fill="url(#lapisBg)"/>
+  <!-- Swirling Cosmic Calligraphy Strokes -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M200 800 C150 550 350 300 650 320 C850 340 750 700 480 750 C300 780 220 620 280 480 C340 340 560 260 700 420" stroke="url(#goldSwirl)" stroke-width="38" opacity="0.95"/>
+    <path d="M180 350 C320 180 620 150 780 360 C880 500 760 780 520 860" stroke="#38BDF8" stroke-width="16" opacity="0.7"/>
+    <path d="M300 820 C420 890 600 860 710 740" stroke="#FFFFFF" stroke-width="10" opacity="0.85"/>
+    <path d="M420 380 C500 280 640 320 620 460 C600 600 440 650 360 540" stroke="url(#goldSwirl)" stroke-width="24"/>
+  </g>
+  <!-- Lapis and Gold Leaf Splatters -->
+  <circle cx="240" cy="280" r="6" fill="#FFE066"/>
+  <circle cx="280" cy="220" r="4" fill="#FFE066"/>
+  <circle cx="680" cy="240" r="8" fill="#38BDF8"/>
+  <circle cx="750" cy="620" r="5" fill="#FFE066"/>
+  <circle cx="490" cy="510" r="14" fill="#FFFFFF"/>
+  <!-- Nuqta / Diacritic Diamond -->
+  <polygon points="500,420 525,445 500,470 475,445" fill="#D4AF37"/>
+  <polygon points="540,360 565,385 540,410 515,385" fill="#38BDF8"/>
+  <text x="450" y="930" font-family="'Cormorant Garamond', Georgia, serif" font-size="24" fill="#F8FAFC" text-anchor="middle" letter-spacing="6">ISMAIL GULGEE JR. ? QALAM &amp; SILENCE</text>
+  <text x="450" y="960" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" fill="#94A3B8" text-anchor="middle" letter-spacing="3">AFGHAN LAPIS LAZULI &amp; 24K GOLD DUST ON LINEN</text>
+</svg>
